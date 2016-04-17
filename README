@@ -1,0 +1,3 @@
+Authors: Alex Bertman, Tim Childers, Tarah Peltz
+
+Project Summary: We will create a 20 questions game that will ask the user a pre-determined set of questions, and, based on the response, will guess the thing the user is thinking of. This will primarily be done with a combination of linked lists for the questions, and a dynamically allocated array for the items. Should the user think of an item the computer doesn't know, the user will be prompted to input their response, which will be stored in the array for future games, allowing the program to "learn".
