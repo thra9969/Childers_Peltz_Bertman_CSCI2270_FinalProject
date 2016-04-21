@@ -5,16 +5,21 @@
 #include <iostream>
 using namespace std;
 
- //struct Pets { 
- //std::string Pname;  //name of pet 
+//struct Pets { 
+//	std::string Pname;  //name of pet 
 //	bool ansArr[20]; //answers to question for each pet 
 //	Pets *next; 
 // 	int score = 0; //the score each pet has;  let the greatest pet win! 
+// 	Pets * Head; //Points to head of list 
+// 	//Pets * Tail; //Gets set by findPetsTail(); 
 // }; 
 // struct Questions { 
 // 	std::string question; //what it asks 
 // 	Questions *nextQ; //points to next question in list 
+// 	Questions *Head; // Points to head in list 
+// 	Questions *Temp; //Used to traverse through the questions 
 // }; 
+
   
 
 
@@ -49,20 +54,41 @@ void Questions::printDirections() { //A fun way to make it more interesting and 
 	cout<<"Then I'll tell you exactly what you were thinking of. Answer my questions with a yes or no"<<endl; 
 }
 void Questions::printQuestions() { //This function will display questions
+	cout<<Temp->question<<endl;
+	getline(cin, userResponse);
+	Temp=Temp->nextQ;
 }
 
 
 
 void Questions::buildQuestions() {
+	index = 0;
 
 }
 
-void Questions::buildResponse() {
+void Questions::buildResponse() {//Would we pass it anything? Do we need a new struct for this? Might be " instead of '
+	if ((userResponse =='yes') ||(userResponse =='Yes')||(userResponse =='y')||(userResponse =='Y')) {
+		matchup = 1;// allows us to compare response to preset responses in addCount
+		userArray[index] = 1;
+		index++;
+	}
+	if ((userResponse =='no') ||(userResponse =='No')||(userResponse =='n')||(userResponse =='N')) {
+		matchup = 0;
+		userArray[index] = 0;
+		index++;
+	}
 
 }
 
 
 void Questions::addCount() { //adds count to pet struct
+	Pets * traverse = new Pets;
+	traverse = Pets->head //Not sure how to make it reference this part of the struct. 
+	if (matchup = traverse->ansArr[index-1]) //Has to be -1 because we incremented index in buildResponse
+	{
+		traverse->score = traverse->score+1;		
+	}
+	traverse = traverse->next;
 	
 }
 
