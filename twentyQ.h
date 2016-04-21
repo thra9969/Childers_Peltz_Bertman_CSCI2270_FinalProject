@@ -30,7 +30,9 @@ public:
 	void printDirections();
 	void printQuestions(); //This function will display question and store answers
 	void addCount(); //adds count to pet struct
-	void 
+	bool userArray[20]; //Used to store user responses
+	bool matchup; //Used to compare user responses with preset response in Pets array
+	int index; //Used to store current index of userArray
 	
 private:
 	
