@@ -68,13 +68,13 @@ void Questions::buildQuestions() {
 
 void Questions::buildResponse() {//Would we pass it anything? Do we need a new struct for this? Might be " instead of '
 	if ((userResponse =='yes') ||(userResponse =='Yes')||(userResponse =='y')||(userResponse =='Y')) {
-		matchup = 1;// allows us to compare response to preset responses in addCount
-		userArray[index] = 1;
+		matchup = true;// allows us to compare response to preset responses in addCount
+		userArray[index] = true;
 		index++;
 	}
 	if ((userResponse =='no') ||(userResponse =='No')||(userResponse =='n')||(userResponse =='N')) {
-		matchup = 0;
-		userArray[index] = 0;
+		matchup = false;
+		userArray[index] = false;
 		index++;
 	}
 
