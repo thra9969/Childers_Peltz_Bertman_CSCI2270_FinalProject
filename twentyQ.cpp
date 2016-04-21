@@ -55,7 +55,7 @@ void Questions::buildPets () { //Builds pets linked list.
 	
 }
 
-void Questions::findPetTail() {
+void Questions::findPetsTail() {
 	Pets * Traverse = new Pets;
 	Traverse = Phead;
 	while (Traverse->next != NULL) {
