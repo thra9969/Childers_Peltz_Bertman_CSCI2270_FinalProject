@@ -5,23 +5,6 @@
 #include <iostream>
 using namespace std;
 
-//struct Pets { 
-//	std::string Pname;  //name of pet 
-//	bool ansArr[20]; //answers to question for each pet 
-//	Pets *next; 
-// 	int score = 0; //the score each pet has;  let the greatest pet win! 
-// 	Pets * Head; //Points to head of list 
-// 	//Pets * Tail; //Gets set by findPetsTail(); 
-// }; 
-// struct Questions { 
-// 	std::string question; //what it asks 
-// 	Questions *nextQ; //points to next question in list 
-// 	Questions *Head; // Points to head in list 
-// 	Questions *Temp; //Used to traverse through the questions 
-// }; 
-
-  
-
 
 Questions::Questions()
 {
@@ -63,10 +46,25 @@ void Questions::printQuestions() { //This function will display questions
 
 void Questions::buildQuestions() {
 	index = 0;
+	//Set Qhead = question1 once it is built
+	
 
 }
 
-void Questions::buildResponse() {//Would we pass it anything? Do we need a new struct for this? Might be " instead of '
+void Questions::buildPets () { //Builds pets linked list. 
+	
+}
+
+void Questions::findPetTail() {
+	Pets * Traverse = new Pets;
+	Traverse = Phead;
+	while (Traverse->next != NULL) {
+		Traverse = Traverse->next;
+	}
+	PTail = Traverse;
+}
+
+void Questions::buildResponse() {//Might be " instead of '. I forget which symbol to use for a string. 
 	if ((userResponse =='yes') ||(userResponse =='Yes')||(userResponse =='y')||(userResponse =='Y')) {
 		matchup = true;// allows us to compare response to preset responses in addCount
 		userArray[index] = true;
@@ -83,7 +81,7 @@ void Questions::buildResponse() {//Would we pass it anything? Do we need a new s
 
 void Questions::addCount() { //adds count to pet struct
 	Pets * traverse = new Pets;
-	traverse = Pets->head //Not sure how to make it reference this part of the struct. 
+	traverse = Phead 
 	if (matchup = traverse->ansArr[index-1]) //Has to be -1 because we incremented index in buildResponse
 	{
 		traverse->score = traverse->score+1;		
