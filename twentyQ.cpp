@@ -17,12 +17,13 @@ twentyQ::~Questions()
 }
 
 void twentyQ::buildHeads(){ //this function initializes the heads of both linked lists and sets walker pointers for both
-	Qhead = new Questions;
-	Phead = new Pets;
-	
+	//Questions * Qhead = new Questions;
+	//Pets * Phead = new Pets;
 	Qhead->next = NULL; 
 	Phead->next = NULL;
+	//Questions * Qwalk = new Questions;
 	Qwalk = Qhead; //need to add these to public
+	//Pets * Pwalk = new Pets;
 	Pwalk = Phead;
 }
 
@@ -92,9 +93,9 @@ void twentyQ::printDirections() { //A fun way to make it more interesting and ch
 	cout<<"Then I'll tell you exactly what you were thinking of. Answer my questions with a yes or no"<<endl; 
 }
 void twentyQ::printQuestions() { //This function will display questions
-	cout<<Temp->question<<endl;
+	cout<<Qwalk->question<<endl;
 	getline(cin, userResponse);
-	Temp=Temp->nextQ;
+	Qwalk=Qwalk->nextQ;
 }
 
 
