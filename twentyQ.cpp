@@ -37,7 +37,7 @@ void twentyQ::readPets(){ //hope this works, no idea...
 		string name = "";
 		string ans[20];
 		
-		while(!ifstream.eof()){
+		while(!infile.eof()){
 			int i=-1;
 			string in;
 			getline(infile, line);
@@ -62,7 +62,7 @@ void twentyQ::readQuestions(){
 	ifstream infile;
 	infile.open(filename);
 	if(infile.is_open()){
-		while(!ifstream.eof()){
+		while(!infile.eof()){
 			getline(infile, line);
 			q.addQuestions(line);
 		}
