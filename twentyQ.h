@@ -15,11 +15,11 @@ struct Questions {
 	Questions *nextQ; //points to next question in list
 };
 
-class Questions
+class twentyQ
 {
 public:
-	Questions();
-	~Questions();
+	twentyQ();
+	~twentyQ();
 	//Pets(); //Do we need to add this in?
 	//~Pets(); 
 	void printMenu();
