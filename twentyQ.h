@@ -25,6 +25,8 @@ public:
 	void printMenu();
 	void printDirections();
 	void printQuestions(); //This function will display question and store answers
+	void readPets();
+	void readQuestions();
 	void addCount(); //adds count to pet struct
 	void findPetsTail(); //Finds tail of list
 	void buildPets(); //Builds pets
