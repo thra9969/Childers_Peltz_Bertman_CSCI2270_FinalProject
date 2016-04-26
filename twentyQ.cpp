@@ -43,7 +43,7 @@ void Questions::readPets(){ //hope this works, no idea...
 		}
 	}
 }
-void Questions::printMenu() {
+void Questions::readPets(){
 	string filename = "questions.txt";
 	string line = "";
 	ifstream infile;
@@ -54,6 +54,14 @@ void Questions::printMenu() {
 			q.buildQuestions(line);
 		}
 	}
+}
+
+void Questions::printMenu() {
+	cout<< "===== 20 QUESTIONS ===="<<endl;
+	cout<< "1. Directions"<<endl;
+	cout<< "2. Start"<<endl;
+	cout<< "3. ?"<<endl;
+	cout<< "4. Quit"<<endl;
 }
 
 void Questions::printDirections() { //A fun way to make it more interesting and change the outcome
