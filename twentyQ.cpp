@@ -16,9 +16,46 @@ Questions::~Questions()
 {
 }
 
-void Questions::printMenu() {
-
+void Questions::readPets(){ //hope this works, no idea...
+	//reading txt file containing pet names and answer values
+	string filename = "pets.txt";
+	string line = "";
+	ifstream infile;
+	infile.open(filename);
+	if(infile.is_open()){
+		string name = "";
+		int ans = 0;
+		
+		while(!ifstream.eof()){
+			int i=0;
+			getline(infile, line);
+			stringstream ss(line);
+			while (getline(ss, in, ',')){
+				if(i == 0){
+					name = in;
+				}else{
+					ans = atoi(in);
+				}
+				q.buildPets(name, ans);  //need to create class q and set function
+				i++;
+			}
+			
+		}
+	}
 }
+void Questions::printMenu() {
+	string filename = "questions.txt";
+	string line = "";
+	ifstream infile;
+	infile.open(filename);
+	if(infile.is_open()){
+		while(!ifstream.eof()){
+			getline(infile, line);
+			q.buildQuestions(line);
+		}
+	}
+}
+
 void Questions::printDirections() { //A fun way to make it more interesting and change the outcome
 	cout<<"Welcome to 20 questions. How are you doing?"<<endl;
 	string response;
@@ -44,14 +81,14 @@ void Questions::printQuestions() { //This function will display questions
 
 
 
-void Questions::buildQuestions() {
+void Questions::buildQuestions(string question) {
 	index = 0;
 	//Set Qhead = question1 once it is built
 	
 
 }
 
-void Questions::buildPets () { //Builds pets linked list. 
+void Questions::buildPets (string name, int ans) { //Builds pets linked list. 
 	
 }
 
