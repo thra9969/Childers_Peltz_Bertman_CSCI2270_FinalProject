@@ -99,6 +99,13 @@ void twentyQ::buildQuestions(string question) {
 
 void twentyQ::buildPets (string name, string ans) { //Builds pets linked list. 
 	
+	/*int i = 0;
+	head = new Pets;
+	head->next = NULL;
+	Pets * tmp = head;
+	while(i<10){
+		tmp->
+	}*/
 }
 
 void twentyQ::findPetsTail() {
