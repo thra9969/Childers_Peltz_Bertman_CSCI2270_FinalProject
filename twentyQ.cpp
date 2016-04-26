@@ -16,6 +16,16 @@ twentyQ::~Questions()
 {
 }
 
+void twentyQ::buildHeads(){ //this function initializes the heads of both linked lists and sets walker pointers for both
+	Qhead = new Questions;
+	Phead = new Pets;
+	
+	Qhead->next = NULL; 
+	Phead->next = NULL;
+	Qwalk = Qhead; //need to add these to public
+	Pwalk = Phead;
+}
+
 void twentyQ::readPets(){ //hope this works, no idea...
 	//reading txt file containing pet names and answer values
 	string filename = "pets.txt";
@@ -91,21 +101,16 @@ void twentyQ::printQuestions() { //This function will display questions
 
 
 void twentyQ::buildQuestions(string question) {
-	index = 0;
-	//Set Qhead = question1 once it is built
-	
+	Qwalk->question = question;
+	Qwalk = Qwalk->nextQ;
 
 }
 
 void twentyQ::buildPets (string name, string ans) { //Builds pets linked list. 
-	
-	/*int i = 0;
-	head = new Pets;
-	head->next = NULL;
-	Pets * tmp = head;
-	while(i<10){
-		tmp->
-	}*/
+	//this seems really simple but I think it works. I have a walker pointer set and then updated to the next (originally set as head)
+	Pwalk->Pname = name;
+	Pwalk->ansArr = ans;
+	Pwalk = Pwalk->next;
 }
 
 void twentyQ::findPetsTail() {
