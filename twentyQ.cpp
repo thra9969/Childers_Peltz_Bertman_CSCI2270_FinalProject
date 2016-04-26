@@ -36,14 +36,14 @@ void Questions::readPets(){ //hope this works, no idea...
 				}else{
 					ans = atoi(in);
 				}
-				q.buildPets(name, ans);  //need to create class q and set function
+				q.addPets(name, ans);  //need to create class q and set function
 				i++;
 			}
 			
 		}
 	}
 }
-void Questions::readPets(){
+void Questions::readQuestions(){
 	string filename = "questions.txt";
 	string line = "";
 	ifstream infile;
@@ -51,7 +51,7 @@ void Questions::readPets(){
 	if(infile.is_open()){
 		while(!ifstream.eof()){
 			getline(infile, line);
-			q.buildQuestions(line);
+			q.addQuestions(line);
 		}
 	}
 }
@@ -86,6 +86,7 @@ void Questions::printQuestions() { //This function will display questions
 	getline(cin, userResponse);
 	Temp=Temp->nextQ;
 }
+
 
 
 
