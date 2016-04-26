@@ -104,15 +104,20 @@ void twentyQ::printQuestions() { //This function will display questions
 
 
 void twentyQ::buildQuestions(string question) {
-	Qwalk->question = question;
+	Questions * NewQ = new Questions;
+	NewQ->question = question;
+	NewQ->nextQ = NULL;
+	Qwalk->nextQ = NewQ;
 	Qwalk = Qwalk->nextQ;
 
 }
 
 void twentyQ::buildPets (string name, int ans[]) { //Builds pets linked list. //Might need ans[20] 
 	//this seems really simple but I think it works. I have a walker pointer set and then updated to the next (originally set as head)
-	Pwalk->Pname = name;
-	Pwalk->ansArr = ans;
+	Pets * NewP = new Pets;
+	NewP = name;
+	NewP->ansArr = ans;
+	Pwalk->next = NewP;
 	Pwalk = Pwalk->next;
 }
 
