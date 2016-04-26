@@ -36,7 +36,8 @@ public:
 	Pets * Phead; //Points to head of list
 	Pets * Ptail; //Gets set by findPetTail();
 	Questions *Qhead; // Points to head in list
-	Questions *Temp; //Used to traverse through the questions
+	Questions *Qwalk; //Used to traverse through the questions
+	Questions *Pwalk;
 	
 private:
 	
