@@ -65,12 +65,12 @@ void Questions::findPetsTail() {
 }
 
 void Questions::buildResponse() {//Might be " instead of '. I forget which symbol to use for a string. 
-	if ((userResponse =='yes') ||(userResponse =='Yes')||(userResponse =='y')||(userResponse =='Y')) {
+	if ((userResponse =="yes") ||(userResponse =="Yes")||(userResponse =="y")||(userResponse =="Y")) {
 		matchup = true;// allows us to compare response to preset responses in addCount
 		userArray[index] = true;
 		index++;
 	}
-	if ((userResponse =='no') ||(userResponse =='No')||(userResponse =='n')||(userResponse =='N')) {
+	if ((userResponse =="no") ||(userResponse =="No")||(userResponse =="n")||(userResponse =="N")) {
 		matchup = false;
 		userArray[index] = false;
 		index++;
