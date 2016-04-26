@@ -39,13 +39,15 @@ void twentyQ::readPets(){ //hope this works, no idea...
 		
 		while(!ifstream.eof()){
 			int i=-1;
+			string in;
 			getline(infile, line);
 			stringstream ss(line);
 			while (getline(ss, in, ',')){
 				if(i == -1){
 					name = in;
 				}else{
-					ans[i] = in;
+					
+					ans[i] = atoi(in);
 				}
 				i++;
 			}
@@ -107,7 +109,7 @@ void twentyQ::buildQuestions(string question) {
 
 }
 
-void twentyQ::buildPets (string name, string ans) { //Builds pets linked list. 
+void twentyQ::buildPets (string name, int ans[]) { //Builds pets linked list. //Might need ans[20] 
 	//this seems really simple but I think it works. I have a walker pointer set and then updated to the next (originally set as head)
 	Pwalk->Pname = name;
 	Pwalk->ansArr = ans;
