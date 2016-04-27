@@ -2,7 +2,7 @@ Project Summary:
 This program is a twenty questions game where the user is asked a series of twenty pre-determined questions from a linked list and attempt to ‘guess’ what the object the user is thinking of. Their answers to the questions are recorded and the program then determines a best-fit match from a linked list of known objects with assigned response answers. Because of limited time and resources, the questions are limited to household pets.
 
 How to Run:
-To run this program, please start by unzipping the project file. Inside, contains a header file, ‘twentyQ.h’; a class file, ‘twentyQ.cpp’; and the driver file, ‘source.cpp’. The project was compiled using Microsoft’s Visual Studio 2015 on Windows and its project file can be opened in Visual. However, you can compile the code without Visual Studio if you manually add the files to a project or simply copy and paste the code.
+To run this program, please start by unzipping the project file. Inside, contains a header file, ‘twentyQ.h’; a class file, ‘twentyQ.cpp’; and the driver file, ‘source.cpp’. The resource file needed includes the text file 'Questions.txt'.  The project was compiled using Microsoft’s Visual Studio 2015 on Windows and its project file can be opened in Visual. However, you can compile the code without Visual Studio if you manually add the files to a project or simply copy and paste the code.
 
 System Requirements :
 This program was built on Windows using Visual Studio 2015, but is designed to work on any compiler on any system.
@@ -11,7 +11,7 @@ Group Members:
 Timothy Childers, Tarah Peltz, Alex Bertman
 
 Open Issues/bugs:
-Our code doesn’t run
+The program does not function as intended. An error is occuring during the building of the linked lists that is propogating through the remainder of the function. We have sought help and after many hours of debugging and rewriting we were still unable to solve this issue.
 
 
 
