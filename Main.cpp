@@ -1,3 +1,7 @@
+/*
+To play this game, ensure you have questions.txt downloaded, along with the twentyQ.cpp library file and 
+the twentyQ.h header file. After you have everything in its right place, hit run and go crazy.
+*/
 #include "twentyQ.h"
 #include <iostream>
 #include <stdlib.h>
@@ -10,20 +14,9 @@
 using namespace std;
 
 
-//int main(int argc, char * argv[]) {
 int main() {
 	twentyQ q;
-	/*Pets * Phead = new Pets; //Points to head of list
-	Pets * Ptail = new Pets; //Gets set by findPetTail();
-	Ptail = q.findPetsTail();
-	Questions *Qhead; // Points to head in list
-	Questions *Qwalk; //Used to traverse through the questions
-	Pets *Pwalk;
-	int Dog[20] = { 1, 1, 0, 0, 1, 1, 0, 0,1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0 };
-	Phead->name = "Dog";
-	Phead->ansArr = Dog;
-	Qhead->nextQ = NULL;
-	Phead->next = NULL;*/
+
 
 	//q.readPets();
 	//q.readQuestions();
