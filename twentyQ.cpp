@@ -151,14 +151,16 @@ void twentyQ::printQuestions() { //This function will display questions
 	Questions *Qhead = readQuestions(); 
 	Questions *tmp = Qhead;
 	//cout << "made it" << endl;
-	while (tmp->next != NULL) {
+	while (tmp != NULL) {
 		cout << tmp->question << endl;
 		getline(cin, userResponse);
+		userInput(userResponse);
 		//buildResponse(userResponse);
 		if (tmp->next->question == QTail->question) {
 		    cout<<QTail->question<<endl;
             getline(cin, userResponse);
-            backup();
+            string answer = backup();
+            answerAnalysis(answer);
 			return;
 		}
 		tmp = tmp->next;
@@ -166,7 +168,49 @@ void twentyQ::printQuestions() { //This function will display questions
 	}
 }
 
+void twentyQ::userInput(string userResponse) {
+	int x = 0;
+	while (x == 0) {
+		x = userInputAnalysis(userResponse);
+		if (x == 0) {
+			getline(cin, userResponse);
+		}
+	}
+}
 
+int twentyQ::userInputAnalysis(string userResponse) {
+		if ((userResponse == "yes") || (userResponse == "Yes") || (userResponse == "y") || (userResponse == "Y")) {
+		return 1;
+	}
+	else if ((userResponse == "no") || (userResponse == "No") || (userResponse == "n") || (userResponse == "N")) {
+		return 1;
+	}
+	cout<<"Come on. Give me a yes or no. I'm not playing around here."<<endl;
+	return 0;
+}
+
+void twentyQ::answerAnalysis(string userResponse) {
+	int x = 0;
+	while (x == 0) {
+		x = invalidAnswer(userResponse);
+		if (x == 0) {
+			getline(cin, userResponse);
+		}
+	}
+}
+
+int twentyQ::invalidAnswer(string userResponse) {
+	if ((userResponse == "yes") || (userResponse == "Yes") || (userResponse == "y") || (userResponse == "Y")) {
+		cout<<"Of course I got it right. I'm perfect. Better luck next time. You'll need it."<<endl;
+		return 1;
+	}
+	else if ((userResponse == "no") || (userResponse == "No") || (userResponse == "n") || (userResponse == "N")) {
+		cout<<"Oh well. Nobody's perfect."<<endl;
+		return 1;
+	}
+	cout<<"Come on. Give me a yes or no. I'm not playing around here."<<endl;
+	return 0;
+}
 
 
 Questions* twentyQ::buildQuestions(string question, Questions *Qhead) {
@@ -224,12 +268,14 @@ Pets* twentyQ::buildPets(string name, int ans[], Pets *Phead) { //Builds pets li
 	return current;
 }
 
-void twentyQ::backup() {
+string twentyQ::backup() {
  string backup[20] = {"Dog", "Cat", "Rabbit", "Hamster", "Lizard", "Bird", "Ferret", "Turtle", "Fish", "Hedgehog", "Hermit Crab", "Snake", "Mouse", "Goat", "Monkey", "Butterfly", "Chicken", "Pig", "Snail", "Rock"};
  srand (time(NULL));
  int i = rand() % 20;
  cout<<"Is your pet a "<<backup[i]<<"?"<<endl;
- return;
+ string answer;
+ getline(cin, answer);
+ return answer;
 };
 
 
