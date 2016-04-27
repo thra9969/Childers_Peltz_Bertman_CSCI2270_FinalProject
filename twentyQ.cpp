@@ -8,7 +8,7 @@
 
 using namespace std;
 
-ifstream infile;
+
 twentyQ::twentyQ()
 {
 	//ctor
@@ -21,12 +21,8 @@ twentyQ::~twentyQ()
 
 void twentyQ::buildHeads() { //this function initializes the heads of both linked lists and sets walker pointers for both
 							 //Questions * Qhead = new Questions;
-						 //Pets * Phead = new Pets;
-	int Dog[20] = {1, 1, 0, 0, 1, 1, 0, 0,1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0}
-	Phead->name = "Dog";
-	Phead->ansArr = Dog;
-	Qhead->nextQ = NULL;
-	Phead->next = NULL;
+							 //Pets * Phead = new Pets;
+	
 	//Questions * Qwalk = new Questions;
 	Qwalk = Qhead; //need to add these to public
 				   //Pets * Pwalk = new Pets;
@@ -36,7 +32,7 @@ void twentyQ::buildHeads() { //this function initializes the heads of both linke
 void twentyQ::readPets() { //hope this works, no idea...
 						   //reading txt file containing pet names and answer values
 	string filename = "pets.txt";
-	string line = "";
+	string line;
 	
 	infile.open(filename);
 	if (infile.is_open()) {
@@ -58,7 +54,7 @@ void twentyQ::readPets() { //hope this works, no idea...
 				}
 				i++;
 			}
-			q.addPets(name, ans);  //need to create class q and set function
+			addPets(name, ans);  //need to create class q and set function
 
 		}
 	}
@@ -66,12 +62,12 @@ void twentyQ::readPets() { //hope this works, no idea...
 void twentyQ::readQuestions() {
 	string filename = "questions.txt";
 	string line = "";
-	
+
 	infile.open(filename);
 	if (infile.is_open()) {
 		while (!infile.eof()) {
 			getline(infile, line);
-			q.addQuestions(line);
+			twentyQ::buildQuestions(line);
 		}
 	}
 }
@@ -87,7 +83,7 @@ void twentyQ::printMenu() {
 void twentyQ::printDirections() { //A fun way to make it more interesting and change the outcome
 	cout << "Welcome to 20 questions. How are you doing?" << endl;
 	string response;
-	getline(cin, response);
+	getline(cin; response);
 	if (response.size() % 3 = 1) {
 		cout << "Well, your day is about to get a whole lot better!" << endl;
 	}
@@ -97,9 +93,9 @@ void twentyQ::printDirections() { //A fun way to make it more interesting and ch
 	else {
 		cout << "Oh. I don't actually care. Sorry. People don't get my sarcasm." << endl;
 	}
-	cout << "Here's how to play. Think of a pet. This pet has to be a pet legal to own in America. So no kangaroos." << endl;
-	cout << "I'm going to read your mind. I'll ask you 20 questions just to make sure I got a good read." << endl;
-	cout << "Then I'll tell you exactly what you were thinking of. Answer my questions with a yes or no" << endl;
+	cout<< "Here's how to play. Think of a pet. This pet has to be a pet legal to own in America. So no kangaroos." << endl;
+	cout<< "I'm going to read your mind. I'll ask you 20 questions just to make sure I got a good read." << endl;
+	cout<< "Then I'll tell you exactly what you were thinking of. Answer my questions with a yes or no" << endl;
 }
 void twentyQ::printQuestions() { //This function will display questions
 	cout << Qwalk->question << endl;
@@ -120,9 +116,9 @@ void twentyQ::buildQuestions(string question) {
 }
 
 void twentyQ::buildPets(string name, int ans[]) { //Builds pets linked list. //Might need ans[20] 
-												  //this seems really simple but I think it works. I have a walker pointer set and then updated to the next (originally set as head)
+												  
 	Pets * NewP = new Pets;
-	NewP = name;
+	NewP->name = name;
 	NewP->ansArr = ans;
 	Pwalk->next = NewP;
 	Pwalk = Pwalk->next;
@@ -154,7 +150,7 @@ void twentyQ::buildResponse() {//Might be " instead of '. I forget which symbol 
 
 void twentyQ::addCount() { //adds count to pet struct
 	Pets * traverse = new Pets;
-	traverse = Phead
+	traverse = Phead;
 		if (matchup = traverse->ansArr[index - 1]) //Has to be -1 because we incremented index in buildResponse
 		{
 			traverse->score = traverse->score + 1;
