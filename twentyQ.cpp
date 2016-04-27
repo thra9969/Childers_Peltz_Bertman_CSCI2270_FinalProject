@@ -5,10 +5,13 @@
 #include <fstream>
 #include <sstream>
 #include <istream>
-
+#include <vector>
 using namespace std;
 
-ifstream infile;
+
+volatile int q = 0;
+volatile int a = 0;
+
 twentyQ::twentyQ()
 {
 	//ctor
@@ -19,29 +22,16 @@ twentyQ::~twentyQ()
 {
 }
 
-void twentyQ::buildHeads() { //this function initializes the heads of both linked lists and sets walker pointers for both
-							 //Questions * Qhead = new Questions;
-						 //Pets * Phead = new Pets;
-	int Dog[20] = {1, 1, 0, 0, 1, 1, 0, 0,1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0}
-	Phead->name = "Dog";
-	Phead->ansArr = Dog;
-	Qhead->nextQ = NULL;
-	Phead->next = NULL;
-	//Questions * Qwalk = new Questions;
-	Qwalk = Qhead; //need to add these to public
-				   //Pets * Pwalk = new Pets;
-	Pwalk = Phead;
-}
 
-void twentyQ::readPets() { //hope this works, no idea...
+Pets* twentyQ::readPets() { 
 						   //reading txt file containing pet names and answer values
-	string filename = "pets.txt";
-	string line = "";
-	
+	/*string filename = "pets.txt";
+	string line;
+
 	infile.open(filename);
 	if (infile.is_open()) {
 		string name = "";
-		string ans[20];
+		int ans[20];
 
 		while (!infile.eof()) {
 			int i = -1;
@@ -50,30 +40,85 @@ void twentyQ::readPets() { //hope this works, no idea...
 			stringstream ss(line);
 			while (getline(ss, in, ',')) {
 				if (i == -1) {
+					//cout << in << endl;
 					name = in;
 				}
 				else {
-
 					ans[i] = stoi(in);
 				}
 				i++;
-			}
-			q.addPets(name, ans);  //need to create class q and set function
+				//cout << i << endl;
+			}			
+			//buildPets(name, &ans[20]);  //need to create class q and set function
 
 		}
-	}
+	}*/
+	
+	
+	Pets *Phead = new Pets;
+
+	int dogarr[20] = { 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0 };
+	buildPets("dog", dogarr, Phead);
+	int catarr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0 };
+	buildPets("cat", catarr, Phead);
+	int rabbitarr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0 };
+	buildPets("rabbit", rabbitarr, Phead);
+	int hamarr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0 };
+	buildPets("hamster", hamarr, Phead);
+	int lizarr [20] = { 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0 };
+	buildPets("lizard", lizarr, Phead);
+	int birdarr[20] = { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 };
+	buildPets("bird", birdarr, Phead);
+	int ferrarr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0 };
+	buildPets("ferret", ferrarr, Phead);
+	int turtarr[20] = { 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0 };
+	buildPets("turtle", turtarr, Phead);
+	int fisharr[20] = { 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0 };
+	buildPets("fish", fisharr, Phead);
+	int hedarr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,};
+	buildPets("hedgehog", hedarr, Phead);
+	int herarr[20] = { 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0 };
+	buildPets("hermit crab", herarr, Phead);
+	int snakearr[20] = { 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0 };
+	buildPets("snake", snakearr, Phead);
+	int mousearr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0 };
+	buildPets("mouse", mousearr, Phead);
+	int goatarr[20] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0 };
+	buildPets("goat", goatarr, Phead);
+	int monkarr[20] = { 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0 };
+	buildPets("monkey", monkarr, Phead);
+	int buttarr[20] = { 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0 };
+	buildPets("butterfly", buttarr, Phead);
+	int chickarr[20] = { 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0 };
+	buildPets("chicken", chickarr, Phead);
+	int pigarr[20] = { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0 };
+	buildPets("pig", pigarr, Phead);
+	int snailarr[20] = { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	buildPets("snail", snailarr, Phead);
+	int rockarr[20] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	buildPets("rock", rockarr, Phead);
+	int smartarr[20] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	buildPets("Smartass...", smartarr, Phead);
+
+	return Phead;
+
+
 }
-void twentyQ::readQuestions() {
+
+Questions* twentyQ::readQuestions() { //this isnt a void anymore
+	//cout << "mewo" << endl;
 	string filename = "questions.txt";
 	string line = "";
-	
+	Questions *Qhead = new Questions;
+
 	infile.open(filename);
 	if (infile.is_open()) {
 		while (!infile.eof()) {
 			getline(infile, line);
-			q.addQuestions(line);
+			buildQuestions(line, Qhead);
 		}
 	}
+	return Qhead;
 }
 
 void twentyQ::printMenu() {
@@ -88,10 +133,10 @@ void twentyQ::printDirections() { //A fun way to make it more interesting and ch
 	cout << "Welcome to 20 questions. How are you doing?" << endl;
 	string response;
 	getline(cin, response);
-	if (response.size() % 3 = 1) {
+	if (response.size() % 3 == 1) {
 		cout << "Well, your day is about to get a whole lot better!" << endl;
 	}
-	else if (response.size() % 3 = 2) {
+	else if (response.size() % 3 == 2) {
 		cout << "Well, mine has been awful. Thanks for asking." << endl;
 	}
 	else {
@@ -102,42 +147,96 @@ void twentyQ::printDirections() { //A fun way to make it more interesting and ch
 	cout << "Then I'll tell you exactly what you were thinking of. Answer my questions with a yes or no" << endl;
 }
 void twentyQ::printQuestions() { //This function will display questions
-	cout << Qwalk->question << endl;
-	getline(cin, userResponse);
-	Qwalk = Qwalk->nextQ;
-}
-
-
-
-
-void twentyQ::buildQuestions(string question) {
-	Questions * NewQ = new Questions;
-	NewQ->question = question;
-	NewQ->nextQ = NULL;
-	Qwalk->nextQ = NewQ;
-	Qwalk = Qwalk->nextQ;
-
-}
-
-void twentyQ::buildPets(string name, int ans[]) { //Builds pets linked list. //Might need ans[20] 
-												  //this seems really simple but I think it works. I have a walker pointer set and then updated to the next (originally set as head)
-	Pets * NewP = new Pets;
-	NewP = name;
-	NewP->ansArr = ans;
-	Pwalk->next = NewP;
-	Pwalk = Pwalk->next;
-}
-
-void twentyQ::findPetsTail() {
-	Pets * Traverse = new Pets;
-	Traverse = Phead;
-	while (Traverse->next != NULL) {
-		Traverse = Traverse->next;
+	Questions *Qhead = readQuestions(); //this is new
+	Questions *tmp = Qhead;
+	cout << "Made it" << endl;
+	while (tmp->next != NULL) {
+		cout << tmp->question << endl;
+		getline(cin, userResponse);
+		buildResponse(userResponse);
+		if (tmp->question == QTail->question) {
+			return;
+		}
+		tmp = tmp->next;
 	}
-	PTail = Traverse;
 }
 
-void twentyQ::buildResponse() {//Might be " instead of '. I forget which symbol to use for a string. 
+
+
+
+Questions* twentyQ::buildQuestions(string question, Questions *Qhead) {
+	/*	Questions *ptr = new Questions;
+		ptr = Qhead;
+
+		while (ptr->next != NULL) {
+			ptr = ptr->next;
+		}
+		ptr->question = question;
+		ptr = ptr->next;
+		ptr->next = NULL;
+		Qhead->next = ptr;
+	}
+		*/
+
+	Questions *newQ = new Questions;
+	newQ->question = question;
+	if (a == 0) {
+		Qhead->question = question;
+		Qhead->next = NULL;
+		a = 1;
+		current2 = Qhead;
+		return Qhead;
+	}
+	current2->next = newQ;
+	//cout << current2->question << endl;
+	current2 = newQ;
+	if (question == "Have you heard that your pet is the word???") {
+		QTail = current2;
+
+	}
+	return Qhead;
+}
+	
+
+
+
+
+Pets* twentyQ::buildPets(string name, int ans[], Pets *Phead) { //Builds pets linked list. //Might need ans[20] 
+	//cout << "HERE" << endl;
+	Pets *newP = new Pets;
+	newP->name = name;
+	if (q == 0) {
+		Phead->name = name;
+		Phead->next = NULL;
+		for (int i = 0; i < 20; i++) {
+			Phead->ansArr[i] = NULL;
+		}
+		q = 1;
+		current = Phead;
+		return current;
+	}
+	current->next = newP;
+	current = newP;
+	newP->name = name;
+	for (int i = 0; i < 20; i++) {
+		newP->ansArr[i] = &ans[i];
+		newP->name = name;
+	}	
+	
+	if (name == "Smartass...") {
+		PTail = current;
+	}
+	return current;
+}
+
+
+
+
+
+
+void twentyQ::buildResponse(string userResponse) {//Might be " instead of '. I forget which symbol to use for a string. 
+	Pets *Phed = readPets();
+	//cout << Phed->name << endl << "shit" << endl;
 	if ((userResponse == "yes") || (userResponse == "Yes") || (userResponse == "y") || (userResponse == "Y")) {
 		matchup = 1;// allows us to compare response to preset responses in addCount
 		userArray[index] = 1;
@@ -148,18 +247,32 @@ void twentyQ::buildResponse() {//Might be " instead of '. I forget which symbol 
 		userArray[index] = 0;
 		index++;
 	}
+	addCount(matchup, Phed, index);
 
 }
 
 
-void twentyQ::addCount() { //adds count to pet struct
+void twentyQ::addCount(int matchup, Pets *Phead, int index) { //adds count to pet struct
 	Pets * traverse = new Pets;
-	traverse = Phead
-		if (matchup = traverse->ansArr[index - 1]) //Has to be -1 because we incremented index in buildResponse
+	cout << Phead->next->name << endl;
+	traverse = Phead;
+	//cout << matchup << " matchup"<< endl;
+	//cout << Phead->name << endl;
+	
+	while (traverse->next != NULL) {
+		cout << traverse->ansArr[index] << endl; //breaking here
+		
+		
+		int x = traverse->ansArr[index];
+		cout << x << endl;
+		if (matchup == x) //Has to be -1 because we incremented index in buildResponse
 		{
 			traverse->score = traverse->score + 1;
 		}
-	traverse = traverse->next;
+		traverse = traverse->next;
+		
+		
+	}
+	
 
 }
-
