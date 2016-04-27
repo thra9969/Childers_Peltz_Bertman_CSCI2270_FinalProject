@@ -1,11 +1,11 @@
 #ifndef TWENTYQ_H
 #define TWENTYQ_H
 #include <string>
-//#include <vector>
+using namespace std;
 
 struct Pets {
 	std::string Pname;  //name of pet
-	bool ansArr[20]; //answers to question for each pet
+	int ansArr[20]; //answers to question for each pet
 	Pets *next;
 	int score = 0; //the score each pet has;  let the greatest pet win!
 
@@ -29,7 +29,9 @@ public:
 	void readQuestions();
 	void addCount(); //adds count to pet struct
 	void findPetsTail(); //Finds tail of list
-	void buildPets(); //Builds pets
+	void buildPets(string name, int ans[]); //Builds pets
+	void buildQuestions(string name);
+	void buildHeads();
 	bool userArray[20]; //Used to store user responses
 	bool matchup; //Used to compare user responses with preset response in Pets array
 	int index; //Used to store current index of userArray
@@ -37,10 +39,11 @@ public:
 	Pets * Ptail; //Gets set by findPetTail();
 	Questions *Qhead; // Points to head in list
 	Questions *Qwalk; //Used to traverse through the questions
-	Questions *Pwalk;
-	
+	Pets *Pwalk;
+	//twentyQ q;
+
 private:
-	
+
 
 
 #endif // HASHTABLE_H
