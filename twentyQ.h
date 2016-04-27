@@ -1,50 +1,66 @@
 #ifndef TWENTYQ_H
 #define TWENTYQ_H
+#include <iostream>
+#include <stdlib.h>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <istream>
+#include <vector>
+
 using namespace std;
 
 struct Pets {
-	std::string Pname;  //name of pet
-	int ansArr[20]; //answers to question for each pet
+	string name;  //name of pet
+	int *ansArr[20]; //answers to question for each pet
 	Pets *next;
 	int score = 0; //the score each pet has;  let the greatest pet win!
 
 };
 struct Questions {
-	std::string question; //what it asks
-	Questions *nextQ; //points to next question in list
+	string question; //what it asks
+	Questions *next; //points to next question in list
 };
 
 class twentyQ
 {
-public:
-	twentyQ();
-	~twentyQ();
-	//Pets(); //Do we need to add this in?
-	//~Pets(); 
-	void printMenu();
-	void printDirections();
-	void printQuestions(); //This function will display question and store answers
-	void readPets();
-	void readQuestions();
-	void addCount(); //adds count to pet struct
-	void findPetsTail(); //Finds tail of list
-	void buildPets(string name, int ans[]); //Builds pets
-	void buildQuestions(string name);
-	void buildHeads();
-	bool userArray[20]; //Used to store user responses
-	bool matchup; //Used to compare user responses with preset response in Pets array
-	int index; //Used to store current index of userArray
-	Pets * Phead; //Points to head of list
-	Pets * Ptail; //Gets set by findPetTail();
-	Questions *Qhead; // Points to head in list
-	Questions *Qwalk; //Used to traverse through the questions
-	Pets *Pwalk;
-	//twentyQ q;
+	public:
+		twentyQ();
+		~twentyQ();
+		//Pets(); //Do we need to add this in?
+		//~Pets(); 
+		void printMenu();
+		void printDirections();
+		void printQuestions(); //This function will display question and store answers
+		Pets* readPets();
+		Questions* readQuestions();
+		void addCount(int matchUp, Pets *head, int num); //adds count to pet struct
+		Pets *findPetsTail(); //Finds tail of list
+		Pets* buildPets(string name, int ans[], Pets *head); //Builds pets
+		Questions* buildQuestions(string name, Questions *head);
+		//void buildHeads();
+		int userArray[20]; //Used to store user responses
+		int matchup; //Used to compare user responses with preset response in Pets array
+		int index; //Used to store current index of userArray
+		void buildResponse(string userResponse);
+		//Questions *tmp;
+		Questions * Qwalk;
+		string userResponse;
+		ifstream infile;
+		Pets * current;
+		Questions * current2;
+		Questions * QTail;
+		Pets * PTail;
+		Questions * tmp;
+		Questions *Qhead;
+		Pets *Phead;
 
-private:
+		//twentyQ q;
+	protected:
+	private:
+		
+		
+};
 
 
-
-#endif // HASHTABLE_H
-
+#endif // TWENTYQ_H
