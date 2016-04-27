@@ -7,6 +7,8 @@
 #include <sstream>
 #include <istream>
 #include <vector>
+#include <time.h>
+#include <ctime>
 
 using namespace std;
 
@@ -28,7 +30,7 @@ class twentyQ
 		twentyQ();
 		~twentyQ();
 		//Pets(); //Do we need to add this in?
-		//~Pets(); 
+		//~Pets();
 		void printMenu();
 		void printDirections();
 		void printQuestions(); //This function will display question and store answers
@@ -38,11 +40,11 @@ class twentyQ
 		Pets *findPetsTail(); //Finds tail of list
 		Pets* buildPets(string name, int ans[], Pets *head); //Builds pets
 		Questions* buildQuestions(string name, Questions *head);
-		//void buildHeads();
 		int userArray[20]; //Used to store user responses
 		int matchup; //Used to compare user responses with preset response in Pets array
 		int index; //Used to store current index of userArray
 		void buildResponse(string userResponse);
+		void backup();
 		//Questions *tmp;
 		Questions * Qwalk;
 		string userResponse;
@@ -58,8 +60,8 @@ class twentyQ
 		//twentyQ q;
 	protected:
 	private:
-		
-		
+
+
 };
 
 
