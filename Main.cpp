@@ -1,3 +1,9 @@
+/*
+To play this game, ensure you have questions.txt downloaded, along with the twentyQ.cpp library file and 
+the twentyQ.h header file. After you have everything in its right place, hit run and go crazy.
+*/
+#include "twentyQ.h"
+#include <iostream>
 #include <stdlib.h>
 #include <string>
 #include <fstream>
@@ -35,6 +41,22 @@ int main() {
 		case 3: {
 			string answer = q.backup();
 			q.answerAnalysis(answer);
+			cout<<"."<<endl;
+			cout<<".."<<endl;
+			cout<<"..."<<endl;
+			cout<<"...."<<endl;
+			cout<<"....."<<endl;
+			cout<<"......"<<endl;
+			cout<<"......."<<endl;
+			cout<<"........"<<endl;
+			cout<<".........."<<endl;
+			cout<<"............"<<endl;
+			cout<<".............."<<endl;
+			cout<<"Ok. Now enter your favorite word"<<endl;
+			getline(cin, answer);
+			int x = answer.size();
+			q.inspirationalquote(x);
+
 			break;
 		}
 
