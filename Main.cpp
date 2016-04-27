@@ -1,9 +1,3 @@
-/*
-To play this game, ensure you have questions.txt downloaded, along with the twentyQ.cpp library file and 
-the twentyQ.h header file. After you have everything in its right place, hit run and go crazy.
-*/
-#include "twentyQ.h"
-#include <iostream>
 #include <stdlib.h>
 #include <string>
 #include <fstream>
@@ -39,6 +33,8 @@ int main() {
 			q.printQuestions();
 			break; }
 		case 3: {
+			string answer = q.backup();
+			q.answerAnalysis(answer);
 			break;
 		}
 
