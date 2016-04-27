@@ -50,6 +50,7 @@ class twentyQ
 		int userInputAnalysis(string userResponse); //Analyzes if user responded incorrectly to a question
 		void userInput(string userResponse); //Analyzes if user responded incorrectly to a question
 		//Questions *tmp;
+		void inspirationalquote (int x);
 		Questions * Qwalk;
 		string userResponse;
 		ifstream infile;
