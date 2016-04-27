@@ -1,10 +1,15 @@
 #ifndef TWENTYQ_H
 #define TWENTYQ_H
+#include <iostream>
+#include <stdlib.h>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <istream>
 using namespace std;
 
 struct Pets {
-	std::string Pname;  //name of pet
+	std::string name;  //name of pet
 	int ansArr[20]; //answers to question for each pet
 	Pets *next;
 	int score = 0; //the score each pet has;  let the greatest pet win!
@@ -35,11 +40,21 @@ public:
 	bool userArray[20]; //Used to store user responses
 	bool matchup; //Used to compare user responses with preset response in Pets array
 	int index; //Used to store current index of userArray
+	void buildResponse();
+	
+	string userResponse;
+	ifstream infile;
 	Pets * Phead; //Points to head of list
 	Pets * Ptail; //Gets set by findPetTail();
 	Questions *Qhead; // Points to head in list
 	Questions *Qwalk; //Used to traverse through the questions
 	Pets *Pwalk;
+	int Dog[20] = { 1, 1, 0, 0, 1, 1, 0, 0,1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0 };
+	Phead->name = "Dog";
+	Phead->ansArr = Dog;
+	Qhead->nextQ = NULL;
+	Phead->next = NULL;
+
 	//twentyQ q;
 
 private:
