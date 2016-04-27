@@ -278,6 +278,19 @@ string twentyQ::backup() {
  return answer;
 };
 
+void twentyQ::inspirationalquote (int x) {
+	int ans = x % 3;
+	if (ans == 0) {
+		cout<<"Just be yourself. Everyone else is already taken."<<endl;
+	}
+	if (ans == 1) {
+		cout<<"Wow. I really hate that word. You don't get an inspirational quote"<<endl;
+	}
+	if (ans == 2) {
+		cout<<"Have a very merry unbirthday today."<<endl;
+	}
+
+}
 
 /*void twentyQ::buildResponse(string userResponse) {//Might be " instead of '. I forget which symbol to use for a string.
 	Pets *Phed = readPets();
