@@ -24,7 +24,7 @@ twentyQ::~twentyQ()
 
 
 Pets* twentyQ::readPets() {
-						   //reading txt file containing pet names and answer values
+//Reads in a text file and builds into a linked list. This part didn't work, so its commented.
 	/*string filename = "pets.txt";
 	string line;
 
@@ -55,6 +55,7 @@ Pets* twentyQ::readPets() {
 	}*/
 
 
+    //all data from pets.txt is hard coded here
 	Pets *Phead = new Pets;
 
 	int dogarr[20] = { 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0 };
@@ -93,11 +94,11 @@ Pets* twentyQ::readPets() {
 	buildPets("chicken", chickarr, Phead);
 	int pigarr[20] = { 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0 };
 	buildPets("pig", pigarr, Phead);
-	int snailarr[20] = { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	int snailarr[20] = { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; 
 	buildPets("snail", snailarr, Phead);
-	int rockarr[20] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	int rockarr[20] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //if you try to be smart and answer all nos
 	buildPets("rock", rockarr, Phead);
-	int smartarr[20] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+	int smartarr[20] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }; //if you try to be smart and answer all yesses
 	buildPets("Smartass...", smartarr, Phead);
 
 	return Phead;
@@ -105,7 +106,7 @@ Pets* twentyQ::readPets() {
 
 }
 
-Questions* twentyQ::readQuestions() { //this isnt a void anymore
+Questions* twentyQ::readQuestions() { 
 	//cout << "mewo" << endl;
 	string filename = "Questions.txt";
 	string line = "";
@@ -121,7 +122,7 @@ Questions* twentyQ::readQuestions() { //this isnt a void anymore
 	return Qhead;
 }
 
-void twentyQ::printMenu() {
+void twentyQ::printMenu() { //prints menu. But you knew that already.
 	cout << "===== 20 QUESTIONS ====" << endl;
 	cout << "1. Directions" << endl;
 	cout << "2. Start" << endl;
@@ -147,7 +148,7 @@ void twentyQ::printDirections() { //A fun way to make it more interesting and ch
 	cout << "Then I'll tell you exactly what you were thinking of. Answer my questions with a yes or no" << endl;
 }
 void twentyQ::printQuestions() { //This function will display questions
-	Questions *Qhead = readQuestions(); //this is new
+	Questions *Qhead = readQuestions(); 
 	Questions *tmp = Qhead;
 	//cout << "made it" << endl;
 	while (tmp->next != NULL) {
@@ -228,12 +229,12 @@ void twentyQ::backup() {
  srand (time(NULL));
  int i = rand() % 20;
  cout<<"Is your pet a "<<backup[i]<<"?"<<endl;
+ return;
 };
 
 
 /*void twentyQ::buildResponse(string userResponse) {//Might be " instead of '. I forget which symbol to use for a string.
 	Pets *Phed = readPets();
-	cout << Phed->name <<" shit" << endl;
 	if ((userResponse == "yes") || (userResponse == "Yes") || (userResponse == "y") || (userResponse == "Y")) {
 		matchup = 1;// allows us to compare response to preset responses in addCount
 		//userArray[index] = 1;
@@ -261,7 +262,6 @@ void twentyQ::backup() {
 		cout << traverse->ansArr[index+1] << "addcount while loop"<<endl; //breaking here
 
 		int x = *traverse->ansArr[index - 1];
-		cout << "fuck you int x" << endl;
 		if (matchup == x) //Has to be -1 because we incremented index in buildResponse
 		{
 			traverse->score = traverse->score + 1;
