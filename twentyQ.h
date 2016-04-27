@@ -44,7 +44,11 @@ class twentyQ
 		int matchup; //Used to compare user responses with preset response in Pets array
 		int index; //Used to store current index of userArray
 		void buildResponse(string userResponse);
-		void backup();
+		string backup(); //Deals with pet guessed
+		void answerAnalysis(string answer);//Analyzes if pet guess is correct
+		int invalidAnswer(string userResponse); //Analyzes if user gave invalid answer to pet guess
+		int userInputAnalysis(string userResponse); //Analyzes if user responded incorrectly to a question
+		void userInput(string userResponse); //Analyzes if user responded incorrectly to a question
 		//Questions *tmp;
 		Questions * Qwalk;
 		string userResponse;
