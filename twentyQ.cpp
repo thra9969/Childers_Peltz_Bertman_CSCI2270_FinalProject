@@ -23,7 +23,7 @@ twentyQ::~twentyQ()
 }
 
 
-Pets* twentyQ::readPets() { 
+Pets* twentyQ::readPets() {
 						   //reading txt file containing pet names and answer values
 	/*string filename = "pets.txt";
 	string line;
@@ -48,13 +48,13 @@ Pets* twentyQ::readPets() {
 				}
 				i++;
 				//cout << i << endl;
-			}			
+			}
 			//buildPets(name, &ans[20]);  //need to create class q and set function
 
 		}
 	}*/
-	
-	
+
+
 	Pets *Phead = new Pets;
 
 	int dogarr[20] = { 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0 };
@@ -107,7 +107,7 @@ Pets* twentyQ::readPets() {
 
 Questions* twentyQ::readQuestions() { //this isnt a void anymore
 	//cout << "mewo" << endl;
-	string filename = "questions.txt";
+	string filename = "Questions.txt";
 	string line = "";
 	Questions *Qhead = new Questions;
 
@@ -149,15 +149,19 @@ void twentyQ::printDirections() { //A fun way to make it more interesting and ch
 void twentyQ::printQuestions() { //This function will display questions
 	Questions *Qhead = readQuestions(); //this is new
 	Questions *tmp = Qhead;
-	cout << "Made it" << endl;
+	//cout << "made it" << endl;
 	while (tmp->next != NULL) {
 		cout << tmp->question << endl;
 		getline(cin, userResponse);
-		buildResponse(userResponse);
-		if (tmp->question == QTail->question) {
+		//buildResponse(userResponse);
+		if (tmp->next->question == QTail->question) {
+		    cout<<QTail->question<<endl;
+            getline(cin, userResponse);
+            backup();
 			return;
 		}
 		tmp = tmp->next;
+
 	}
 }
 
@@ -165,21 +169,11 @@ void twentyQ::printQuestions() { //This function will display questions
 
 
 Questions* twentyQ::buildQuestions(string question, Questions *Qhead) {
-	/*	Questions *ptr = new Questions;
-		ptr = Qhead;
 
-		while (ptr->next != NULL) {
-			ptr = ptr->next;
-		}
-		ptr->question = question;
-		ptr = ptr->next;
-		ptr->next = NULL;
-		Qhead->next = ptr;
-	}
-		*/
 
 	Questions *newQ = new Questions;
 	newQ->question = question;
+	//cout<<newQ->question<<"build"<<endl;
 	if (a == 0) {
 		Qhead->question = question;
 		Qhead->next = NULL;
@@ -188,7 +182,7 @@ Questions* twentyQ::buildQuestions(string question, Questions *Qhead) {
 		return Qhead;
 	}
 	current2->next = newQ;
-	//cout << current2->question << endl;
+    //cout << Qhead->question << "endbuild"<<endl;
 	current2 = newQ;
 	if (question == "Have you heard that your pet is the word???") {
 		QTail = current2;
@@ -196,12 +190,12 @@ Questions* twentyQ::buildQuestions(string question, Questions *Qhead) {
 	}
 	return Qhead;
 }
-	
 
 
 
 
-Pets* twentyQ::buildPets(string name, int ans[], Pets *Phead) { //Builds pets linked list. //Might need ans[20] 
+
+Pets* twentyQ::buildPets(string name, int ans[], Pets *Phead) { //Builds pets linked list. //Might need ans[20]
 	//cout << "HERE" << endl;
 	Pets *newP = new Pets;
 	newP->name = name;
@@ -221,58 +215,61 @@ Pets* twentyQ::buildPets(string name, int ans[], Pets *Phead) { //Builds pets li
 	for (int i = 0; i < 20; i++) {
 		newP->ansArr[i] = &ans[i];
 		newP->name = name;
-	}	
-	
+	}
+
 	if (name == "Smartass...") {
 		PTail = current;
 	}
 	return current;
 }
 
+void twentyQ::backup() {
+ string backup[20] = {"Dog", "Cat", "Rabbit", "Hamster", "Lizard", "Bird", "Ferret", "Turtle", "Fish", "Hedgehog", "Hermit Crab", "Snake", "Mouse", "Goat", "Monkey", "Butterfly", "Chicken", "Pig", "Snail", "Rock"};
+ srand (time(NULL));
+ int i = rand() % 20;
+ cout<<"Is your pet a "<<backup[i]<<"?"<<endl;
+};
 
 
-
-
-
-void twentyQ::buildResponse(string userResponse) {//Might be " instead of '. I forget which symbol to use for a string. 
+/*void twentyQ::buildResponse(string userResponse) {//Might be " instead of '. I forget which symbol to use for a string.
 	Pets *Phed = readPets();
-	//cout << Phed->name << endl << "shit" << endl;
+	cout << Phed->name <<" shit" << endl;
 	if ((userResponse == "yes") || (userResponse == "Yes") || (userResponse == "y") || (userResponse == "Y")) {
 		matchup = 1;// allows us to compare response to preset responses in addCount
-		userArray[index] = 1;
+		//userArray[index] = 1;
 		index++;
 	}
 	if ((userResponse == "no") || (userResponse == "No") || (userResponse == "n") || (userResponse == "N")) {
 		matchup = 0;
-		userArray[index] = 0;
+		//userArray[index] = 0;
 		index++;
 	}
+    cout<<index<<" index"<<endl;
 	addCount(matchup, Phed, index);
 
 }
 
-
-void twentyQ::addCount(int matchup, Pets *Phead, int index) { //adds count to pet struct
+*/
+/*void twentyQ::addCount(int matchup, Pets *Phead, int index) { //adds count to pet struct
 	Pets * traverse = new Pets;
-	cout << Phead->next->name << endl;
+	cout << "addcountstart" << endl;
 	traverse = Phead;
 	//cout << matchup << " matchup"<< endl;
 	//cout << Phead->name << endl;
-	
+
 	while (traverse->next != NULL) {
-		cout << traverse->ansArr[index] << endl; //breaking here
-		
-		
-		int x = traverse->ansArr[index];
-		cout << x << endl;
+		cout << traverse->ansArr[index+1] << "addcount while loop"<<endl; //breaking here
+
+		int x = *traverse->ansArr[index - 1];
+		cout << "fuck you int x" << endl;
 		if (matchup == x) //Has to be -1 because we incremented index in buildResponse
 		{
 			traverse->score = traverse->score + 1;
 		}
 		traverse = traverse->next;
-		
-		
-	}
-	
 
-}
+
+	}
+
+
+}*/
