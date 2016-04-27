@@ -126,7 +126,7 @@ void twentyQ::printMenu() { //prints menu. But you knew that already.
 	cout << "===== 20 QUESTIONS ====" << endl;
 	cout << "1. Directions" << endl;
 	cout << "2. Start" << endl;
-	cout << "3. ?" << endl;
+	cout << "3. ?" << endl; //Guesses your animal immediately
 	cout << "4. Quit" << endl;
 }
 
@@ -168,7 +168,7 @@ void twentyQ::printQuestions() { //This function will display questions
 	}
 }
 
-void twentyQ::userInput(string userResponse) {
+void twentyQ::userInput(string userResponse) { 
 	int x = 0;
 	while (x == 0) {
 		x = userInputAnalysis(userResponse);
