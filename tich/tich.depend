@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1462301618 source:/home/user/Desktop/tich/main.cpp
+	"twentyQ.h"
+	<iostream>
+	<stdlib.h>
+	<string>
+	<fstream>
+	<sstream>
+	<iostream>
+	<vector>
+
+1462308518 /home/user/Desktop/tich/include/twentyQ.h
+	<iostream>
+	<stdlib.h>
+	<string>
+	<fstream>
+	<sstream>
+	<istream>
+	<vector>
+	<time.h>
+	<ctime>
+
+1462326660 source:/home/user/Desktop/tich/src/twentyQ.cpp
+	"twentyQ.h"
+	<iostream>
+	<stdlib.h>
+	<string>
+	<fstream>
+	<sstream>
+	<istream>
+	<vector>
+
